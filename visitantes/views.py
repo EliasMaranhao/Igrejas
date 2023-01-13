@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from visitantes.models import Visitante
 
 # Create your views here.
@@ -23,11 +23,14 @@ def cadastro(request):
         visitante = Visitante(nome = nome, email = email, data_visita = data_visita, evangelico = evangelico, primeira_vez = primeira_vez, igreja_origem = igreja_origem, pastor = pastor, observacao = observacao, como_conheceu_igreja = como_conheceu_igreja)
         visitante.save()
 
-        todos_visitantes = Visitante.objects.all()
-
-        return render(request, 'visitantes/pesquisa.html', {'visitantes' : todos_visitantes})
+        return redirect('pesquisa')
     else:
         return render(request, 'visitantes/cadastro.html')
 
 def pesquisa(request):
-    return render(request, 'visitantes/pesquisa.html')
+    todos_visitantes = Visitante.objects.all()
+    return render(request, 'visitantes/pesquisa.html', {'visitantes' : todos_visitantes})
+
+def busca(request, visitante_id):
+    visitante = get_object_or_404(Visitante, pk=visitante_id)
+    return render(request, 'visitantes/busca.html', {'visitante' : visitante})
