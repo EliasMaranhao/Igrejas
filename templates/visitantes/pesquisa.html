@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'css/igreja.css' %}">
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data_Visita</th>
+                <th>Evangélico</th>
+                <th>Primeira_Vez</th>
+                <th>Origem_Igreja</th>
+                <th>Pastor</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for visitante in visitantes %}
+                <tr>
+                    <td>{{ visitante.nome }}</td>
+                    <td>{{ visitante.email }}</td>
+                    <td>{{ visitante.data_visita }}</td>
+                    <td>{{ visitante.evangelico }}</td>
+                    <td>{{ visitante.primeira_vez }}</td>
+                    <td>{{ visitante.origem_igreja }}</td>
+                    <td>{{ visitante.pastor }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="{% static 'js/jquery/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+</body>
+</html>

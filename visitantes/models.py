@@ -13,3 +13,4 @@ class Visitante(models.Model):
     igreja_origem = models.CharField(max_length=200, default='Não pertence a nenhuma igreja')
     pastor = models.CharField(max_length=200, blank=True)
     observacao = models.TextField(max_length=1000, blank=True)
+    como_conheceu_igreja = models.CharField(max_length=200)
